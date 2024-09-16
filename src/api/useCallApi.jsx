@@ -8,8 +8,6 @@ const useCallApi = (url, itemsPerPage = 5) => {
   const [currentPage, setCurrentPage] = useState(1); //-> State để theo dõi trang hiện tại
   const [totalPages, setTotalPages] = useState(1); //-> State để lưu trữ tổng số trang
 
-  console.log(currentPage);
-
   let params = `?_page=${currentPage}&_limit=${itemsPerPage}`;
 
   const getApi = async () => {

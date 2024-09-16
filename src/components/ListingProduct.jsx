@@ -17,7 +17,6 @@ const ListingProduct = () => {
       <tbody>
         {data.length > 0 &&
           data.map((value) => {
-            console.log(value);
             return (
               <tr key={value.id}>
                 <td>{value.id}</td>
