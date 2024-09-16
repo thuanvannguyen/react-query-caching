@@ -1,6 +1,10 @@
 import Table from "react-bootstrap/Table";
+import useCallApi from "../api/useCallApi";
 
 const ListingProduct = () => {
+  const { data, isLoading } = useCallApi(
+    "https://qcshp3-8080.csb.app/products"
+  );
   return (
     <Table striped bordered hover>
       <thead>
@@ -8,16 +12,20 @@ const ListingProduct = () => {
           <th>#</th>
           <th>Name Product</th>
           <th>Description</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td></td>
-        </tr>
+        {data.length > 0 &&
+          data.map((value) => {
+            console.log(value);
+            return (
+              <tr key={value.id}>
+                <td>{value.id}</td>
+                <td>{value.title}</td>
+                <td>{value.content}</td>
+              </tr>
+            );
+          })}
       </tbody>
     </Table>
   );
